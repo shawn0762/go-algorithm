@@ -1,14 +1,14 @@
-package main
+package linkedlist
 
 import "fmt"
 
-func main() {
-	l := newList()
-	//l.add(2).add(5).add(3).printAllNode()
-	//l.add(2).add(5).add(3).reverse_direct().printAllNode()
-	//l.add(2).add(5).add(3).reverse_recursive().printAllNode()
-	l.add(2).add(5).add(3).reverse_insert().printAllNode()
-}
+//func main() {
+//	l := newList()
+//	//l.add(2).add(5).add(3).printAllNode()
+//	//l.add(2).add(5).add(3).reverse_direct().printAllNode()
+//	//l.add(2).add(5).add(3).reverse_recursive().printAllNode()
+//	l.add(2).add(5).add(3).reverse_insert().printAllNode()
+//}
 
 type LinkedList struct {
 	head *LNode
@@ -26,7 +26,7 @@ type LNode struct {
 	时间复杂度：整个过程只需要遍历一次链表，所以为O(n)，n为链表节点数量
 	空间复杂度：相比递归，节省了栈操作的消耗；相比就地逆序，节省了一个pre变量
  */
-func (ll *LinkedList) reverse_insert() *LinkedList {
+func (ll *LinkedList) ReverseInsert() *LinkedList {
 	// 空链表，或链表只有一个结点，则直接返回，无需处理
 	firstNode := ll.head.next
 	if firstNode == nil || firstNode.next == nil {
@@ -59,7 +59,7 @@ func (ll *LinkedList) reverse_insert() *LinkedList {
  * 时间复杂度：整个过程只需要遍历一次链表，所以为O(n)，n为链表节点数量
  * 空间复杂度：相比就地逆序，节省了两个变量，但递归调用需要额外的压栈和弹栈操作，相比之下性能会有所下降
  */
-func (ll *LinkedList) reverse_recursive() *LinkedList {
+func (ll *LinkedList) ReverseRecursive() *LinkedList {
 	// 空链表，或链表只有一个结点，则直接返回，无需处理
 	firstNode := ll.head.next
 	if firstNode == nil || firstNode.next == nil {
@@ -96,7 +96,7 @@ func reverseChild(node *LNode) *LNode {
  * 时间复杂度：整个过程只需要遍历一次链表，所以为O(n)，n为链表节点数量
  * 空间复杂度：无论链表节点数量是多少，整个过程都只需要两个变量：pre和next，用来保存前后指针，所以为O(1)
  */
-func (ll *LinkedList) reverse_direct() *LinkedList {
+func (ll *LinkedList) ReverseDirect() *LinkedList {
 	// 空链表，或链表只有一个结点，则直接返回，无需处理
 	firstNode := ll.head.next
 	if firstNode == nil || firstNode.next == nil {
@@ -121,7 +121,7 @@ func (ll *LinkedList) reverse_direct() *LinkedList {
 }
 
 // 初始化一个空的单向链表
-func newList() *LinkedList {
+func NewList() *LinkedList {
 	n := &LinkedList{
 		head: &LNode{next: nil, data: 0},
 		len:  0,
@@ -130,23 +130,29 @@ func newList() *LinkedList {
 }
 
 // 添加元素的方法
-func (ll *LinkedList) add(a int) *LinkedList {
-	ll.len += 1
+func (ll *LinkedList) Add(a int) *LinkedList {
+	/**
+	 * 时间复杂度：O(n)
+	 * 空间复杂度：O(1)
+	 */
 	newNode := &LNode{next: nil, data: a}
 	cur := ll.head
-	next := cur.next
-	for next != nil {
+	for cur.next != nil {
 		cur = cur.next
-		next = cur.next
 	}
 	cur.next = newNode
+	ll.len += 1
 	return ll
 }
 
 // 打印所有元素
-func (ll *LinkedList) printAllNode() {
-	cur := ll.head.next
+func (ll *LinkedList) PrintAllNode() {
+	/**
+	 * 时间复杂度：O(n)
+	 * 空间复杂度：O(1)
+	 */
 	fmt.Printf("Len %d(", ll.len)
+	cur := ll.head.next
 	for cur != nil {
 		fmt.Print(cur.data, " ")
 		cur = cur.next

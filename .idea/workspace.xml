@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da9e8be3-a5e0-44bb-b792-ab64ed86b8ac" name="Default Changelist" comment="" />
+    <list default="true" id="f74abc70-8a4f-40c3-9bc7-ca228c10be09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkedlist/headlessLinkedList.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkedlist/headlessLinkedList_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/linkedlist/linkedList_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/algorithm.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/go-algorithm.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linkedList.go" beforeDir="false" afterPath="$PROJECT_DIR$/linkedlist/linkedList.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,106 +24,172 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Go Application" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
-  <component name="GOROOT" path="C:\Go" />
-  <component name="GoLibraries">
-    <option name="urls">
-      <list>
-        <option value="file://$PROJECT_DIR$" />
-      </list>
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1gR5YBDiIloLRNWidYoykOBigEj" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="DefaultGoTemplateProperty" value="Go Application" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
-    <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Go" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
   </component>
-  <component name="RunManager">
-    <configuration name="go build linkedList.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="algorithm" />
+  <component name="RunManager" selected="Go Test.TestHeadlessLinkedList_Add in go-algorithm/linkedlist">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="go-algorithm" />
       <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
       <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/linkedList.go" />
+      <filePath value="$PROJECT_DIR$/" />
       <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build headlessLinkedList.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="go-algorithm" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/linkedlist/headlessLinkedList.go" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestHeadlessLinkedList_Add in go-algorithm/linkedlist" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-algorithm" />
+      <working_directory value="$PROJECT_DIR$/linkedlist" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="go-algorithm/linkedlist" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestHeadlessLinkedList_Add$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestLinkedList_Add in go-algorithm/linkedlist" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-algorithm" />
+      <working_directory value="$PROJECT_DIR$/linkedlist" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="go-algorithm/linkedlist" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestLinkedList_Add$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestLinkedList_headless_Add in go-algorithm/linkedlist" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-algorithm" />
+      <working_directory value="$PROJECT_DIR$/linkedlist" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="go-algorithm/linkedlist" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestLinkedList_headless_Add$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="go-algorithm" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="headlessLinkedList_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="go-algorithm" />
+      <working_directory value="$PROJECT_DIR$/linkedlist" />
+      <framework value="gotest" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/linkedlist/headlessLinkedList_test.go" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build linkedList.go" />
+        <item itemvalue="Go Test.TestHeadlessLinkedList_Add in go-algorithm/linkedlist" />
+        <item itemvalue="Go Test.headlessLinkedList_test.go" />
+        <item itemvalue="Go Build.go build headlessLinkedList.go" />
+        <item itemvalue="Go Test.TestLinkedList_Add in go-algorithm/linkedlist" />
+        <item itemvalue="Go Test.TestLinkedList_headless_Add in go-algorithm/linkedlist" />
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+    <option name="myConnectionType" value="NONE" />
+  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="da9e8be3-a5e0-44bb-b792-ab64ed86b8ac" name="Default Changelist" comment="" />
-      <created>1598064609571</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1598064609571</updated>
-    </task>
     <servers />
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <environment>
+      <map>
+        <entry key="GOPROXY" value="https://goproxy.io,direct" />
+      </map>
+    </environment>
   </component>
   <component name="WindowStateProjectService">
-    <state x="561" y="70" key="#GOPATH" timestamp="1598068263687">
+    <state x="561" y="70" key="#GOPATH" timestamp="1598149116526">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="561" y="70" key="#GOPATH/0.0.1536.824@0.0.1536.824" timestamp="1598068263687" />
-    <state x="561" y="272" width="414" height="209" key="#GOROOT" timestamp="1598068196730">
+    <state x="561" y="70" key="#GOPATH/0.0.1536.824@0.0.1536.824" timestamp="1598149116526" />
+    <state x="465" y="36" key="#go_build_headlessLinkedList.go" timestamp="1598154029891">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="561" y="272" width="414" height="209" key="#GOROOT/0.0.1536.824@0.0.1536.824" timestamp="1598068196730" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1598068251260">
+    <state x="465" y="36" key="#go_build_headlessLinkedList.go/0.0.1536.824@0.0.1536.824" timestamp="1598154029891" />
+    <state x="586" y="279" key="EnvironmentVariablesDialog" timestamp="1598149067211">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598068251260" />
-    <state width="1493" height="130" key="GridCell.Tab.0.bottom" timestamp="1598085000875">
+    <state x="586" y="279" key="EnvironmentVariablesDialog/0.0.1536.824@0.0.1536.824" timestamp="1598149067211" />
+    <state x="549" y="166" key="FileChooserDialogImpl" timestamp="1598151418922">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="130" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598085000875" />
-    <state width="1493" height="130" key="GridCell.Tab.0.center" timestamp="1598085000875">
+    <state x="549" y="166" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1598151418922" />
+    <state width="1493" height="143" key="GridCell.Tab.0.bottom" timestamp="1598156423123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="130" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598085000875" />
-    <state width="1493" height="130" key="GridCell.Tab.0.left" timestamp="1598085000875">
+    <state width="1493" height="143" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598156423123" />
+    <state width="1493" height="143" key="GridCell.Tab.0.center" timestamp="1598156423123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="130" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598085000875" />
-    <state width="1493" height="130" key="GridCell.Tab.0.right" timestamp="1598085000875">
+    <state width="1493" height="143" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598156423123" />
+    <state width="1493" height="143" key="GridCell.Tab.0.left" timestamp="1598156423123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="130" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598085000875" />
-    <state x="382" y="31" key="SettingsEditor" timestamp="1598068584916">
+    <state width="1493" height="143" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598156423123" />
+    <state width="1493" height="143" key="GridCell.Tab.0.right" timestamp="1598156423123">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="382" y="31" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1598068584916" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1598078856412">
+    <state width="1493" height="143" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598156423123" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1598153481948">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598078856412" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <default-breakpoints>
-        <breakpoint type="DlvErrorBreakpoint" />
-      </default-breakpoints>
-    </breakpoint-manager>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598153481948" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1598153481948">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1598153481948" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1598153481948">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1598153481948" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1598153481948">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1598153481948" />
+    <state x="200" y="64" key="SettingsEditor" timestamp="1598151420586">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="200" y="64" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1598151420586" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1598151995132">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1598151995132" />
   </component>
 </project>
