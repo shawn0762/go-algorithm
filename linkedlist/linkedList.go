@@ -1,15 +1,11 @@
 package linkedlist
 
-import "fmt"
+import (
+	"fmt"
+	"go-algorithm/set"
+)
 
-//func main() {
-//	l := newList()
-//	//l.add(2).add(5).add(3).printAllNode()
-//	//l.add(2).add(5).add(3).reverse_direct().printAllNode()
-//	//l.add(2).add(5).add(3).reverse_recursive().printAllNode()
-//	l.add(2).add(5).add(3).reverse_insert().printAllNode()
-//}
-
+// 有头链表结构体
 type LinkedList struct {
 	head *LNode
 	len  int
@@ -17,15 +13,110 @@ type LinkedList struct {
 
 type LNode struct {
 	next *LNode
-	data int
+	data int32
+}
+
+// 删除重复项-3：利用一个int32位图数据结构进行去重
+// 时间复杂度：只需遍历一遍链表，为O(n)
+// 空间复杂度：O(1)
+func (ll *LinkedList) UniqueBitmap() *LinkedList {
+	bitmap := set.NewBitMap32()
+
+	pre := ll.head
+	cur := ll.head.next
+	for cur != nil {
+		if bitmap.Has(cur.data) {
+			// 将节点踢出链表
+			pre.next = cur.next
+			cur = cur.next
+			continue
+		}
+		bitmap.Add(cur.data)
+		pre = cur
+		cur = cur.next
+	}
+	return ll
+}
+
+// 删除重复项-2：递归法
+func (ll *LinkedList) UniqueRecursive() *LinkedList {
+	// 时间复杂度：需要进行双重遍历，所以为O(n^2)，相对于顺序法，增加了许多额外的函数调用（即递归），效率更低
+	// 空间复杂度：使用了三个变量，所以为O(1)
+	ll.head.next, ll.len = uniqueNode(ll.head.next)
+	return ll
+}
+
+// 通过递归对值去重
+func  uniqueNode(node *LNode) (*LNode, int) {
+	if node == nil {
+		return node, 0
+	}
+	if node.next == nil {
+		return node, 1
+	}
+	var length int
+	node.next, length = uniqueNode(node.next)
+	length += 1 // 算上当前node节点
+
+	pre := node // 当前节点的前驱节点
+	cur := node.next // 当前节点
+	for cur != nil {
+		if cur.data == node.data {
+			// 由于删除了cur节点，那原cur.next节点的前驱节点依然是当前的pre，不用改动
+			length -= 1
+			pre.next = cur.next
+		} else {
+			// 即将进入下一次循环，当前节点将变成前驱节点
+			pre = cur
+		}
+		cur = cur.next
+	}
+	return node, length
+}
+
+// 删除重复项-1：顺序删除
+func (ll *LinkedList) Unique() *LinkedList {
+	if ll.len <= 1 {
+		return ll
+	}
+
+	/**
+	时间复杂度：使用了双重循环，所以为O(n^2)
+	空间复杂度：整个过程只是额外使用了3个变量，无其他额外空间占用，所以为O(1)
+	*/
+
+	var outerCur *LNode // 外层循环的当前节点
+	var innerCur *LNode // 内层循环的当前节点
+	var innerPre *LNode // 内层循环的当前节点的上一个节点
+
+	outerCur = ll.head.next
+
+	for outerCur != nil {
+		innerPre = outerCur
+		innerCur = outerCur.next
+		for innerCur != nil {
+
+			if innerCur.data != outerCur.data {
+				innerPre = innerCur
+				innerCur = innerCur.next
+				continue
+			}
+			// 相同则移除innerCurr
+			// @todo 这里只是不再引用那个节点，但那个节点还是存在于内存中，是否需要手动释放节点的内存？
+			innerPre.next = innerCur.next // 前一个节点直接跳过当前节点，而指向下一个节点，实现将当前节点踢出链表
+			innerCur = innerCur.next      // 继续比较下一个节点
+		}
+		outerCur = outerCur.next
+	}
+	return ll
 }
 
 /**
-	链表倒序-3：插入法
-	遍历链表，从第二个节点开始，逐个将节点插入到头节点后面
-	时间复杂度：整个过程只需要遍历一次链表，所以为O(n)，n为链表节点数量
-	空间复杂度：相比递归，节省了栈操作的消耗；相比就地逆序，节省了一个pre变量
- */
+链表倒序-3：插入法
+遍历链表，从第二个节点开始，逐个将节点插入到头节点后面
+时间复杂度：整个过程只需要遍历一次链表，所以为O(n)，n为链表节点数量
+空间复杂度：相比递归，节省了栈操作的消耗；相比就地逆序，节省了一个pre变量
+*/
 func (ll *LinkedList) ReverseInsert() *LinkedList {
 	// 空链表，或链表只有一个结点，则直接返回，无需处理
 	firstNode := ll.head.next
@@ -50,7 +141,6 @@ func (ll *LinkedList) ReverseInsert() *LinkedList {
 	}
 	return ll
 }
-
 
 /**
  * 链表倒序-2：递归实现逆序
@@ -129,8 +219,8 @@ func NewList() *LinkedList {
 	return n
 }
 
-// 添加元素的方法
-func (ll *LinkedList) Add(a int) *LinkedList {
+// 添加一个元素
+func (ll *LinkedList) Add(a int32) *LNode {
 	/**
 	 * 时间复杂度：O(n)
 	 * 空间复杂度：O(1)
@@ -142,7 +232,7 @@ func (ll *LinkedList) Add(a int) *LinkedList {
 	}
 	cur.next = newNode
 	ll.len += 1
-	return ll
+	return newNode
 }
 
 // 打印所有元素
@@ -158,4 +248,35 @@ func (ll *LinkedList) PrintAllNode() {
 		cur = cur.next
 	}
 	fmt.Print(")")
+}
+
+// 删除节点
+// 时间复杂度：删除非末端节点为O(1)，删除末端节点为O(n)，平均复杂度为O(1)
+// 空间复杂度：最多需要2个变量存放指针，为O(1)
+func (ll *LinkedList) Del(node *LNode) *LinkedList {
+	if node == nil || ll.len == 0 {
+		return ll
+	}
+
+	n1 := node.next // node节点的下一个节点
+	if n1 != nil {
+		// 因为不知道node节点的前一个节点在哪里，所以无法直接删除node
+		// 但是可以知道node节点的下一个节点，删除下一个节点是O(1)
+		// 在删除下一个节点前，将其内容复制到node，最终看起来就像是删除了node，实际上删除的是node 的next结点
+		node.next = n1.next
+		node.data = n1.data
+		ll.len -= 1
+		// 最后取消n1节点的引用，让GC回收内存
+		n1 = nil
+		return ll
+	}
+
+	// 如果是最后一个节点，则必须从头遍历链表，直到找到前一个节点
+	cur := ll.head
+	for cur.next != node {
+		cur = cur.next
+	}
+	cur.next = nil
+	ll.len -= 1
+	return ll
 }
