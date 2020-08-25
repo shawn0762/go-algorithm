@@ -48,5 +48,6 @@ func TestLinkedList_UniqueBitmap(t *testing.T) {
 	l.Add(2)
 	l.Add(3)
 	l.Add(5)
+	l.Add(5)
 	l.UniqueBitmap().PrintAllNode()
 }

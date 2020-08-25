@@ -3,7 +3,7 @@ package set
 import "testing"
 
 func TestBitMap32_PrintMap(t *testing.T) {
-	bmp := NewBitMap32()
+	bmp := NewBitMap(64)
 	bmp.Add(5)
 	bmp.Add(7)
 	bmp.Add(15)
@@ -11,7 +11,7 @@ func TestBitMap32_PrintMap(t *testing.T) {
 }
 
 func TestBitMap32_Has(t *testing.T) {
-	bmp := NewBitMap32()
+	bmp := NewBitMap(64)
 	bmp.Add(5)
 	bmp.Add(7)
 	bmp.Add(15)

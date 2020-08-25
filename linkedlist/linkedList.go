@@ -13,14 +13,14 @@ type LinkedList struct {
 
 type LNode struct {
 	next *LNode
-	data int32
+	data int
 }
 
 // 删除重复项-3：利用一个int32位图数据结构进行去重
 // 时间复杂度：只需遍历一遍链表，为O(n)
 // 空间复杂度：O(1)
 func (ll *LinkedList) UniqueBitmap() *LinkedList {
-	bitmap := set.NewBitMap32()
+	bitmap := set.NewBitMap(125)
 
 	pre := ll.head
 	cur := ll.head.next
@@ -220,7 +220,7 @@ func NewList() *LinkedList {
 }
 
 // 添加一个元素
-func (ll *LinkedList) Add(a int32) *LNode {
+func (ll *LinkedList) Add(a int) *LNode {
 	/**
 	 * 时间复杂度：O(n)
 	 * 空间复杂度：O(1)

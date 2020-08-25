@@ -71,7 +71,7 @@ func NewHeadlessLinkedList() *HeadlessLinkedList {
 }
 
 // 添加一个新节点
-func (ll *HeadlessLinkedList) Add(i int32) *HeadlessLinkedList {
+func (ll *HeadlessLinkedList) Add(i int) *HeadlessLinkedList {
 	// 新节点
 	n := &LNode{next: nil, data: i}
 	// 如果是空链表，则新节点为第一个节点
