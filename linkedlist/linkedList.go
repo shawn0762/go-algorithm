@@ -3,6 +3,7 @@ package linkedlist
 import (
 	"fmt"
 	"go-algorithm/set"
+	"math"
 )
 
 // 有头链表结构体
@@ -14,6 +15,63 @@ type LinkedList struct {
 type LNode struct {
 	next *LNode
 	data int
+}
+
+// 对链表重新排序：如1->2->3->4->5  ==> 1->5->2->4->3
+func (ll *LinkedList) ReOrder() *LinkedList {
+	if ll.len <= 2 {
+		return ll
+	}
+
+	// 特征-1：链表前半段相对位置不变—— 1   2   3
+	// 所以找到后半段的第一个节点
+	mid := math.Ceil(float64(5)/2)
+	var i float64
+	i = 1
+	curr2 := ll.head.next
+	for i < mid {
+		curr2 = curr2.next
+		i++
+	}
+
+	newHead := curr2.next
+	curr2.next = nil
+
+
+	// 节点数量为0或1时，无需处理直接返回原链表
+	//if sec == nil {
+	//	return ll
+	//}
+
+	// 将后半段逆序
+
+	var pre *LNode
+	c := newHead
+	var n *LNode
+	for c != nil {
+		n = c.next // 先记录下一个节点的位置，不然后面就没了
+		c.next = pre // 逆序：当前节点指向前一个节点
+		// 继续遍历下一个节点，当前节点变为pre节点
+		pre = c
+		c = n
+	}
+	newHead = pre
+
+	// 开始合并两条链表
+	curr1 := ll.head.next
+	var tmp *LNode
+	for curr1 != nil {
+		if newHead == nil {
+			break
+		}
+		tmp = newHead.next
+		newHead.next = curr1.next
+		curr1.next = newHead
+
+		curr1 = newHead.next
+		newHead = tmp
+	}
+	return ll
 }
 
 // 删除重复项-3：利用一个int32位图数据结构进行去重
@@ -47,7 +105,7 @@ func (ll *LinkedList) UniqueRecursive() *LinkedList {
 }
 
 // 通过递归对值去重
-func  uniqueNode(node *LNode) (*LNode, int) {
+func uniqueNode(node *LNode) (*LNode, int) {
 	if node == nil {
 		return node, 0
 	}
@@ -58,7 +116,7 @@ func  uniqueNode(node *LNode) (*LNode, int) {
 	node.next, length = uniqueNode(node.next)
 	length += 1 // 算上当前node节点
 
-	pre := node // 当前节点的前驱节点
+	pre := node      // 当前节点的前驱节点
 	cur := node.next // 当前节点
 	for cur != nil {
 		if cur.data == node.data {

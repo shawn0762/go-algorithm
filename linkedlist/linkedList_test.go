@@ -51,3 +51,13 @@ func TestLinkedList_UniqueBitmap(t *testing.T) {
 	l.Add(5)
 	l.UniqueBitmap().PrintAllNode()
 }
+
+func TestLinkedList_ReOrder(t *testing.T) {
+	l := NewList()
+	l.Add(1)
+	l.Add(2)
+	l.Add(3)
+	l.Add(4)
+	l.Add(5)
+	l.ReOrder().PrintAllNode()
+}
