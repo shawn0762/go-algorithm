@@ -17,6 +17,97 @@ type LNode struct {
 	data int
 }
 
+// 将相邻的两个节点翻转（交换位置）-1：
+// 互换值法：互相交换data的值
+func (ll *LinkedList) NeighborReverse() *LinkedList {
+	if ll.len < 2 {
+		return nil
+	}
+	cur := ll.head.next
+	//next := cur.next
+	var d int
+	for cur.next != nil {
+		d = cur.data
+		cur.data = cur.next.data
+		cur.next.data = d
+		cur = cur.next.next
+	}
+	return ll
+}
+
+// 将相邻的两个节点翻转（交换位置）-2：
+// 调整指针法：改变指针的指向实现交换
+func (ll *LinkedList) NeighborReverse2() *LinkedList {
+	if ll.len < 2 {
+		return nil
+	}
+
+	pre := ll.head
+	cur := pre.next
+	var tmp *LNode
+	for cur != nil && cur.next != nil {
+		// 交换指针
+		tmp = cur.next.next
+		pre.next = cur.next
+		cur.next.next = cur
+		cur.next = tmp
+		// 移位
+		pre = cur
+		cur = tmp
+	}
+	return ll
+}
+
+
+
+// 如果链表存在环，找出环的入口点，即找出末端节点指向了哪一个节点
+func (ll *LinkedList) FindEntrance() *LNode {
+	isLoop := ll.IsLoop()
+	if isLoop == nil {
+		return nil
+	}
+
+	// 推到过程：
+	// 从第一个节点出发，当快、慢两个指针相遇时，假设慢指针走了s步，则快指针走了2s步，此时快指针领先n圈
+	// 假设环长为r，则：s + nr = 2s, n >= 1
+	// 所以有 s = nr（这里可以得出第一个结论：第一次相遇时，慢指针最多刚好走完一整个链表，因为此时n=2，当环入口为第一个节点时，r最大）
+	// 假设 链表长为L，第一个节点到环入口节点的距离为 a，环入口节点到相遇节点为x，则有如下关系
+	// a + x = (n - 1) * r + r
+	// a + x = (n - 1) * r + (L - a)
+	// a = (n - 1) * r + (L - a - x)
+	// 第一次相遇，n=0，所以有：a = L - a - x
+	// 先看L - a - x，这个表达式的结果就是：从相遇点继续往前走到环入口点的距离
+	// 而这个距离刚好等于：从第一个节点到环入口点的距离 a
+	// 所以，如果一个指针从第一个节点出发，第二个指针从第一个相遇点出发，每次走一步，则必定在入口点相遇
+
+	f := ll.head.next
+	s := isLoop
+	for {
+		f = f.next
+		s = s.next
+		if f == s {
+			return f
+		}
+	}
+}
+
+
+// 判断链表是否有环
+// 快慢指针法：快慢不一的两个指针同时从第一个节点出发，如果有环，则一定会相遇
+func (ll *LinkedList) IsLoop() *LNode {
+	// 同时从第一个节点出发
+	slow := ll.head.next
+	fast := ll.head.next
+	for slow != nil && fast.next != nil {
+		slow = slow.next
+		fast = fast.next.next
+		if slow == fast {
+			return slow
+		}
+	}
+	return nil
+}
+
 // 对链表重新排序：如1->2->3->4->5  ==> 1->5->2->4->3
 func (ll *LinkedList) ReOrder() *LinkedList {
 	if ll.len <= 2 {
@@ -25,7 +116,7 @@ func (ll *LinkedList) ReOrder() *LinkedList {
 
 	// 特征-1：链表前半段相对位置不变—— 1   2   3
 	// 所以找到后半段的第一个节点
-	mid := math.Ceil(float64(5)/2)
+	mid := math.Ceil(float64(5) / 2)
 	var i float64
 	i = 1
 	curr2 := ll.head.next
@@ -36,7 +127,6 @@ func (ll *LinkedList) ReOrder() *LinkedList {
 
 	newHead := curr2.next
 	curr2.next = nil
-
 
 	// 节点数量为0或1时，无需处理直接返回原链表
 	//if sec == nil {
@@ -49,7 +139,7 @@ func (ll *LinkedList) ReOrder() *LinkedList {
 	c := newHead
 	var n *LNode
 	for c != nil {
-		n = c.next // 先记录下一个节点的位置，不然后面就没了
+		n = c.next   // 先记录下一个节点的位置，不然后面就没了
 		c.next = pre // 逆序：当前节点指向前一个节点
 		// 继续遍历下一个节点，当前节点变为pre节点
 		pre = c
