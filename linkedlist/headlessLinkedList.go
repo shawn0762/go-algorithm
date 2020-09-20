@@ -24,13 +24,13 @@ func (ll *HeadlessLinkedList) ReverseRecursive() *HeadlessLinkedList {
 
 // 通过递归调用，完成对子链的逆序
 func reverseChildB(node *LNode) *LNode {
-	if node == nil || node.next == nil {
+	if node == nil || node.Next == nil {
 		return node
 	}
 
-	newHead := reverseChildB(node.next)
-	node.next.next = node
-	node.next = nil
+	newHead := reverseChildB(node.Next)
+	node.Next.Next = node
+	node.Next = nil
 	return newHead
 }
 
@@ -48,13 +48,13 @@ func (ll *HeadlessLinkedList) ReverseDirect() *HeadlessLinkedList {
 	var next *LNode
 
 	pre = ll.first
-	cur = ll.first.next
+	cur = ll.first.Next
 
-	ll.first.next = nil // 将原链表中第一个节点，设为末端节点
+	ll.first.Next = nil // 将原链表中第一个节点，设为末端节点
 
 	for cur != nil {
-		next = cur.next
-		cur.next = pre // 指向前一个节点
+		next = cur.Next
+		cur.Next = pre // 指向前一个节点
 		// 继续处理下一个节点
 		// 当前节点就是下一个节点的pre
 		pre = cur
@@ -73,7 +73,7 @@ func NewHeadlessLinkedList() *HeadlessLinkedList {
 // 添加一个新节点
 func (ll *HeadlessLinkedList) Add(i int) *HeadlessLinkedList {
 	// 新节点
-	n := &LNode{next: nil, data: i}
+	n := &LNode{Next: nil, Data: i}
 	// 如果是空链表，则新节点为第一个节点
 	if ll.len == 0 {
 		ll.first = n
@@ -82,11 +82,11 @@ func (ll *HeadlessLinkedList) Add(i int) *HeadlessLinkedList {
 	}
 
 	cur := ll.first
-	for cur.next != nil {
-		cur = cur.next
+	for cur.Next != nil {
+		cur = cur.Next
 	}
 	// 将新节点追加到链表末端
-	cur.next = n
+	cur.Next = n
 	ll.len += 1
 	return ll
 }
@@ -97,8 +97,8 @@ func (ll *HeadlessLinkedList) PrintL() {
 	cur := ll.first
 	fmt.Printf("Len %d(", ll.len)
 	for cur != nil {
-		fmt.Print(cur.data, " ")
-		cur = cur.next
+		fmt.Print(cur.Data, " ")
+		cur = cur.Next
 	}
 	fmt.Print(")")
 }

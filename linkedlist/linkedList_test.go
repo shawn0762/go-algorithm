@@ -71,10 +71,10 @@ func TestLinkedList_IsLoop(t *testing.T) {
 	last := l.Add(5)
 
 	//entry = nil
-	last.next = entry
+	last.Next = entry
 	isLoop := l.IsLoop()
 	// 第一次相遇的点肯定是4
-	if isLoop == nil || isLoop.data != 4 {
+	if isLoop == nil || isLoop.Data != 4 {
 		println("is not loop")
 		t.Error("unexpected result")
 	}
@@ -89,13 +89,13 @@ func TestLinkedList_FindEntrance(t *testing.T) {
 	entry := l.Add(3) // 环形入口点
 	l.Add(4)
 	last := l.Add(5)
-	last.next = entry
+	last.Next = entry
 	e := l.FindEntrance()
-	if e == nil || e.data != 3 {
+	if e == nil || e.Data != 3 {
 		println("is not loop")
 		t.Error("unexpected result")
 	} else {
-		println("Find circle entrace success: ", e.data)
+		println("Find circle entrace success: ", e.Data)
 	}
 }
 
