@@ -12,12 +12,61 @@ type BNode struct {
 	RightChild *BNode
 }
 
-func convert2linkedList(node *BNode) *BNode {
+// 判断输入的某个数组是否是某二元查找树的后序遍历的序列
+// 假设二元查找树的顺序是：1234567，则其后序遍历的顺序是：1325764
+func IsAfterOrder(arr []int, start int, end int) bool {
+	// 特征-1：数组最后一个元素肯定是根节点
+	rootData := arr[end]
 
-	//newLeftRoot := convert2linkedList(node.LeftChild)
-	//newRightRoot := convert2linkedList(node.LeftChild)
+	var i int
 
+	// 特征-2：左子树所有节点的值都比根节点小，右子树所有节点的值都比根节点大
+	for i = start; i < end; i++ {
+		if arr[i] > rootData {
+			break
+		}
+	}
 
+	// 这样的话，i前面的值一定是小于rootData
+	for j := start; j < i; j++ {
+		if arr[j] >= rootData {
+			return false
+		}
+	}
+
+	rightMatch := true
+	leftMatch := true
+
+	if i <= end - 1 {
+		rightMatch = IsAfterOrder(arr, i, end - 1)
+	}
+	if i - 1 >= start {
+		leftMatch = IsAfterOrder(arr, start, i-1)
+	}
+	return leftMatch && rightMatch
+}
+
+// 将二元查找树转换成双向链表，要求不能创建任何新节点，只能调整节点的指向
+var pHead *BNode
+var pEnd *BNode
+
+func Convert2linkedList(node *BNode) {
+	if node == nil {
+		return
+	}
+
+	// 先将左子树按二元查找树的顺序接入双向链表
+	Convert2linkedList(node.LeftChild)
+	node.LeftChild = pEnd
+	if pEnd == nil {
+		pHead = node
+	} else {
+		pEnd.RightChild = node
+	}
+	pEnd = node
+
+	// 从这里开始，右子树会从最左下角按顺序接入双向链表的末端，最终形成完整的链表
+	Convert2linkedList(node.RightChild)
 }
 
 // 判断两棵树是否相等
