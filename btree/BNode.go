@@ -18,7 +18,7 @@ func IsAfterOrder(arr []int, start int, end int) bool {
 	// 特征-1：数组最后一个元素肯定是根节点
 	rootData := arr[end]
 
-	var i int
+	var i,j int
 
 	// 特征-2：左子树所有节点的值都比根节点小，右子树所有节点的值都比根节点大
 	for i = start; i < end; i++ {
@@ -28,8 +28,15 @@ func IsAfterOrder(arr []int, start int, end int) bool {
 	}
 
 	// 这样的话，i前面的值一定是小于rootData
-	for j := start; j < i; j++ {
+	for j = start; j < i; j++ {
 		if arr[j] >= rootData {
+			return false
+		}
+	}
+
+	// 这样的话，从i开始，后面的值一定是大于rootData
+	for j = i; j < end; j++ {
+		if arr[j] < rootData {
 			return false
 		}
 	}
@@ -37,11 +44,11 @@ func IsAfterOrder(arr []int, start int, end int) bool {
 	rightMatch := true
 	leftMatch := true
 
-	if i <= end - 1 {
-		rightMatch = IsAfterOrder(arr, i, end - 1)
-	}
-	if i - 1 >= start {
+	if i > start {
 		leftMatch = IsAfterOrder(arr, start, i-1)
+	}
+	if j < end {
+		rightMatch = IsAfterOrder(arr, i, end - 1)
 	}
 	return leftMatch && rightMatch
 }

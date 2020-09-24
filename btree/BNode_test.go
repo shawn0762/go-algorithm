@@ -73,8 +73,14 @@ func TestConvert2linkedList(t *testing.T) {
 
 func TestIsAfterOrder(t *testing.T) {
 
-	arr := [] int{1,3,2,5,7,6,4,9}
+	arr := [] int{1,3,2,5,8,6,4,7}
 	orderMatch := IsAfterOrder(arr, 0, len(arr) - 1)
+	if orderMatch == true {
+		t.Error("It's real false")
+	}
+
+	arr2 := [] int{1,3,2,5,7,6,4}
+	orderMatch = IsAfterOrder(arr2, 0, len(arr2) - 1)
 	if orderMatch == false {
 		t.Error("It's real true")
 	}
